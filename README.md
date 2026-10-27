@@ -2,6 +2,14 @@
 
 A static portfolio for an aspiring Junior Data Analyst. No build step or package installation is required.
 
+Website: <https://datajada.github.io/portfolio/>.
+
+## GitHub Pages deployment
+
+GitHub Pages publishes the root of the `main` branch in `datajada/portfolio`, with HTTPS enforced. The root `.nojekyll` file keeps this plain HTML/CSS/JavaScript site from being processed by Jekyll.
+
+To publish changes, commit and push to `main`, then check the Pages build/deployment in the repository's Actions tab. Pages settings should remain **Deploy from a branch**, branch **main**, folder **/(root)**. Asset links stay relative so they work under the `/portfolio/` project path.
+
 ## Local preview
 
 From this folder, run:
@@ -28,6 +36,8 @@ Open <http://localhost:8000> in a browser.
 - `assets/certificates/`: certificate image previews and the original supplied BCS and Coursera PDFs.
 - `assets/documents/giada-pasqualato-cv.pdf`: the supplied CV, linked from the About section and preserved unchanged.
 - `assets/favicon.svg`, `assets/favicon-32.png`, and `assets/apple-touch-icon.png`: browser and mobile icons.
+- `.nojekyll`: serves the GitHub Pages source as a plain static site.
+- `sitemap.xml` and `robots.txt`: the canonical homepage sitemap and its discovery URL.
 
 ## Confirmed content and sources
 
@@ -70,15 +80,15 @@ The green availability dot gently pulses while the intro is visible. Its animati
 
 ## Search and sharing metadata
 
-The head includes a descriptive title and summary, author, theme color, Open Graph text/profile metadata, Twitter summary metadata, and a ProfilePage/Person JSON-LD record grounded in the confirmed biography and profile links.
+The head includes a descriptive title and summary, author, theme color, canonical URL, Open Graph profile metadata, Twitter summary metadata, and a ProfilePage/Person JSON-LD record grounded in the confirmed biography and profile links. The canonical address and profile URL are <https://datajada.github.io/portfolio/>. Social previews use the absolute, content-versioned portrait JPEG URL, with dimensions and descriptive alt text.
 
-There is no confirmed production domain yet. Before publishing, set the actual absolute canonical URL and `og:url`, add an absolute sharing-image URL with an appropriate image, and create a sitemap for that domain. Do not use the Skillshop credential URL or assume a GitHub Pages address as the portfolio's canonical URL.
+The single-page sitemap is <https://datajada.github.io/portfolio/sitemap.xml> and is referenced in `robots.txt`. Update its `lastmod` date when the site content changes. If the public URL changes, update the canonical, Open Graph, structured data, social-image, sitemap, and robots URLs together.
 
 The Skillshop expiry is shown as a fixed date rather than an automatically renewed validity claim. Update it after renewal.
 
 
 ## PageSpeed validation
 
-Google PageSpeed Insights was reviewed, but no hosted report or score can be produced until this site has a publicly reachable URL. No score is claimed for the local preview. Run both mobile and desktop reports at <https://pagespeed.web.dev/> after publication; field data may need enough real visits before it becomes available.
+The confirmed public URL <https://datajada.github.io/portfolio/> is ready for mobile and desktop tests at <https://pagespeed.web.dev/> once the Pages deployment completes. No measured PageSpeed score is claimed in this README. Field data may need enough real visits before it becomes available.
 
-Local checks cover image/font assets, syntax, semantic HTML, native anchor offsets, fixed/mobile navigation, animation completion, responsive layout, and the static/reduced-motion fallbacks. Configure compression and cache headers on the chosen host when publishing.
+Local checks cover image/font assets, syntax, semantic HTML, native anchor offsets, fixed/mobile navigation, animation completion, responsive layout, and the static/reduced-motion fallbacks. Rerun hosted performance reports after significant content or asset changes.
