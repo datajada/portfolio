@@ -1,0 +1,311 @@
+.hero-section {
+  position: relative;
+  isolation: isolate;
+  padding-top: clamp(3.5rem, 8vw, 8rem);
+  padding-bottom: clamp(3.5rem, 8vw, 8rem);
+}
+
+.hero-section::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+  background-image: radial-gradient(#d4d4d8 0.7px, transparent 0.7px);
+  background-size: 24px 24px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 20%, #000);
+  mask-image: linear-gradient(90deg, transparent 20%, #000);
+}
+
+.hero-name {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  isolation: isolate;
+}
+
+.hero-name::after {
+  position: absolute;
+  right: 0;
+  bottom: 0.06em;
+  left: 0;
+  z-index: -1;
+  height: 0.13em;
+  content: "";
+  border-radius: 1rem;
+  background: #a7f3d0;
+  transform-origin: left;
+}
+
+.notebook-shell {
+  padding: 1px;
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, #a7f3d0, #e4e4e7 55%, #fff);
+  box-shadow: 0 24px 60px -38px rgb(4 120 87 / 50%);
+}
+
+.hero-notebook {
+  overflow: hidden;
+  border-radius: calc(1.5rem - 1px);
+  background: #fff;
+}
+
+.notebook-chrome {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #e4e4e7;
+  color: #52525b;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+}
+
+.notebook-dots {
+  display: flex;
+  gap: 0.3125rem;
+}
+
+.notebook-dots i {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #f87171;
+}
+
+.notebook-dots i:nth-child(2) { background: #fbbf24; }
+.notebook-dots i:nth-child(3) { background: #34d399; }
+
+.notebook-language {
+  margin-left: auto;
+  padding: 0.2rem 0.45rem;
+  border: 1px solid #d4d4d8;
+  border-radius: 0.375rem;
+  background: #fafafa;
+  font-size: 0.625rem;
+}
+
+.notebook-body {
+  padding: 1.25rem;
+}
+
+.notebook-caption,
+.notebook-output-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: #71717a;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.025em;
+}
+
+.notebook-caption > span:first-child,
+.notebook-output-label > span:first-child {
+  text-transform: uppercase;
+}
+
+.notebook-status {
+  min-width: 5rem;
+  color: #047857;
+  text-align: right;
+}
+
+.notebook-code {
+  position: relative;
+  min-height: 10rem;
+  margin: 1.25rem 0;
+  color: #334155;
+  font-family: var(--font-mono);
+  font-size: clamp(0.6875rem, 1vw, 0.8125rem);
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  tab-size: 2;
+}
+
+.notebook-code code {
+  display: block;
+  font: inherit;
+  white-space: inherit;
+}
+
+.code-keyword { color: #7c3aed; }
+.code-function { color: #047857; }
+.code-string { color: #92400e; }
+.code-number { color: #7c3aed; }
+
+.notebook-typing {
+  position: absolute;
+  inset: 0;
+}
+
+.is-running .notebook-static {
+  visibility: hidden;
+}
+
+.notebook-typing::after {
+  content: "▍";
+  color: #047857;
+  animation: notebook-cursor 700ms steps(2, end) infinite;
+}
+
+.notebook-workflow {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  padding: 0.75rem 0 1.25rem;
+}
+
+.notebook-workflow::before {
+  position: absolute;
+  top: 1.5rem;
+  right: 16.666%;
+  left: 16.666%;
+  height: 1px;
+  content: "";
+  background: #d1fae5;
+}
+
+.workflow-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  min-width: 0;
+  color: #065f46;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+}
+
+.workflow-step span {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid #a7f3d0;
+  border-radius: 50%;
+  background: #ecfdf5;
+  color: #047857;
+  font-size: 0.625rem;
+  transition: background-color 220ms ease, border-color 220ms ease, color 220ms ease;
+}
+
+.workflow-step strong { font-weight: 400; }
+
+.is-running .workflow-step span {
+  border-color: #e4e4e7;
+  background: #fafafa;
+  color: #71717a;
+}
+
+[data-phase="gather"] .workflow-step:first-child span,
+[data-phase="explore"] .workflow-step:nth-child(-n+2) span,
+[data-phase="explain"] .workflow-step span {
+  border-color: #047857;
+  background: #047857;
+  color: #fff;
+}
+
+.notebook-output {
+  display: grid;
+  gap: 0.625rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e4e4e7;
+  transition: opacity 350ms ease, transform 350ms ease;
+}
+
+.is-running .notebook-output {
+  opacity: 0.3;
+  transform: translateY(4px);
+}
+
+.notebook-project {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-width: 0;
+  color: #3f3f46;
+  font-size: 0.75rem;
+}
+
+.notebook-project-mark {
+  color: #047857;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+}
+
+.notebook-project strong {
+  margin-left: auto;
+  padding: 0.1875rem 0.375rem;
+  border-radius: 0.3125rem;
+  background: #f4f4f5;
+  color: #52525b;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 400;
+}
+
+picture {
+  display: block;
+}
+
+.portrait-picture {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes notebook-cursor {
+  50% { opacity: 0; }
+}
+
+@keyframes name-underline {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes notebook-arrive {
+  from { transform: translateY(10px); }
+  to { transform: translateY(0); }
+}
+
+@keyframes availability-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.25; transform: scale(0.85); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .availability-dot {
+    animation: availability-pulse 2.2s ease-in-out infinite;
+    animation-play-state: paused;
+  }
+
+  .hero-section.is-intro-visible .availability-dot {
+    animation-play-state: running;
+  }
+
+  .hero-name::after {
+    animation: name-underline 850ms 180ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .notebook-shell {
+    animation: notebook-arrive 650ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-name::after,
+  .notebook-shell,
+  .notebook-typing::after,
+  .availability-dot {
+    animation: none;
+  }
+
+  .notebook-output {
+    transition: none;
+    transform: none;
+  }
+}

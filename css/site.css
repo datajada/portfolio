@@ -1,0 +1,470 @@
+:root {
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fafafa;
+  color: #18181b;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: #18181b;
+  color: #fff;
+  transform: translateY(calc(-100% - 1rem));
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+section[id] {
+  scroll-margin-top: 1.5rem;
+}
+
+nav a,
+footer a,
+.resource-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+
+.resource-link {
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 0;
+  max-width: 100%;
+  padding: 0.625rem 1rem;
+  border: 1px solid #047857;
+  border-radius: 0.625rem;
+  background: #047857;
+  color: #fff;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.resource-link:hover,
+.resource-link:focus-visible {
+  border-color: #065f46;
+  background: #065f46;
+  color: #fff;
+}
+
+.resource-link .text-zinc-500 {
+  color: inherit;
+}
+
+.resource-link-secondary {
+  border-color: #d4d4d8;
+  background: #f4f4f5;
+  color: #3f3f46;
+}
+
+.resource-link-secondary:hover,
+.resource-link-secondary:focus-visible {
+  border-color: #a1a1aa;
+  background: #e4e4e7;
+  color: #18181b;
+}
+
+#contact .resource-link-secondary {
+  border-color: #52525b;
+  background: #27272a;
+  color: #e4e4e7;
+}
+
+#contact .resource-link-secondary:hover,
+#contact .resource-link-secondary:focus-visible {
+  border-color: #71717a;
+  background: #3f3f46;
+  color: #fff;
+}
+
+.mobile-nav-toggle {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.625rem;
+  border-radius: 0.5rem;
+}
+
+.linkedin-primary {
+  background: #047857;
+  color: #fff;
+}
+
+.linkedin-primary:hover,
+.linkedin-primary:focus-visible {
+  background: #065f46;
+}
+
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1.5rem;
+}
+
+.certificate-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.certificate-preview {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  border-bottom: 1px solid #e4e4e7;
+  background: #fff;
+}
+
+.certificate-preview img {
+  position: absolute;
+  inset: 1rem;
+  display: block;
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  object-fit: contain;
+  transition: transform 160ms ease;
+}
+
+.certificate-preview:focus-visible {
+  outline-offset: -4px;
+}
+
+.certificate-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+  padding: 1.5rem;
+}
+
+.certificate-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 0.25rem;
+}
+
+.hero-highlights .font-heading {
+  font-size: clamp(1.25rem, 5.5vw, 1.875rem);
+  white-space: nowrap;
+}
+
+.about-portrait {
+  object-position: 53% 40%;
+  transform: scale(1.26);
+  transform-origin: 53% 40%;
+}
+
+.contact-email {
+  display: block;
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid #3f3f46;
+  border-radius: 0.75rem;
+  background: rgb(24 24 27 / 45%);
+  color: #f4f4f5;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.contact-email:hover {
+  border-color: #059669;
+  background: rgb(4 120 87 / 12%);
+}
+
+.contact-email-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: #d4d4d8;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.contact-email-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  border-radius: 0.5rem;
+  background: rgb(16 185 129 / 12%);
+  color: #6ee7b7;
+}
+
+.contact-email-arrow {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: #a1a1aa;
+}
+
+.contact-email-address {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: clamp(0.8125rem, 2.5vw, 0.9375rem);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.social-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.social-icon-small {
+  width: 1rem;
+  height: 1rem;
+}
+
+.project-preview {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+  background: #fafafa;
+}
+
+a,
+button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgb(16 185 129 / 20%);
+}
+
+nav a,
+footer a,
+.button-link,
+.resource-link,
+.linkedin-primary,
+.contact-email,
+.mobile-nav-toggle,
+.certificate-preview,
+#projects article > a {
+  transition: color 180ms ease, background-color 180ms ease,
+    border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+nav a:not([href="#top"]),
+footer a:not([href="#top"]) {
+  position: relative;
+}
+
+nav a:not([href="#top"])::after,
+footer a:not([href="#top"])::after {
+  position: absolute;
+  right: 0;
+  bottom: 0.2rem;
+  left: 0;
+  height: 2px;
+  content: "";
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+nav a:is(:hover, :focus-visible) {
+  color: #047857;
+}
+
+nav a:not([href="#top"]):is(:hover, :focus-visible) {
+  border-radius: 0.375rem;
+  background: #ecfdf5;
+  box-shadow: 0 0 0 0.375rem #ecfdf5;
+}
+
+nav a:not([href="#top"]):is(:hover, :focus-visible)::after,
+footer a:not([href="#top"]):is(:hover, :focus-visible)::after {
+  transform: scaleX(1);
+}
+
+nav a[href="#top"] > span:first-child,
+footer a[href="#top"] > span:first-child {
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+nav a[href="#top"]:is(:hover, :focus-visible) > span:first-child,
+footer a[href="#top"]:is(:hover, :focus-visible) > span:first-child {
+  background: #047857;
+}
+
+footer a:is(:hover, :focus-visible),
+footer a[href="#top"]:is(:hover, :focus-visible) .font-heading {
+  color: #6ee7b7;
+}
+
+.button-link:is(:hover, :focus-visible),
+.resource-link:is(:hover, :focus-visible),
+.linkedin-primary:is(:hover, :focus-visible) {
+  border-color: #10b981;
+  background: #065f46;
+  color: #fff;
+  box-shadow: 0 8px 18px -8px rgb(4 120 87 / 45%);
+}
+
+.button-link-secondary:is(:hover, :focus-visible),
+.resource-link-secondary:is(:hover, :focus-visible) {
+  border-color: #059669;
+  background: #ecfdf5;
+  color: #065f46;
+}
+
+#contact .resource-link-secondary:is(:hover, :focus-visible) {
+  border-color: #34d399;
+  background: #064e3b;
+  color: #ecfdf5;
+}
+
+.mobile-nav-toggle:is(:hover, :focus-visible, [aria-expanded="true"]) {
+  background: #d1fae5;
+  color: #047857;
+}
+
+.contact-email:is(:hover, :focus-visible) {
+  border-color: #10b981;
+  background: rgb(4 120 87 / 18%);
+  box-shadow: 0 0 0 1px rgb(16 185 129 / 18%),
+    0 8px 20px -12px rgb(16 185 129 / 35%);
+}
+
+.contact-email-icon,
+.contact-email-arrow,
+.contact-email-address {
+  transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.contact-email:is(:hover, :focus-visible) .contact-email-icon {
+  background: rgb(16 185 129 / 22%);
+}
+
+.contact-email:is(:hover, :focus-visible) .contact-email-address,
+.contact-email:is(:hover, :focus-visible) .contact-email-arrow {
+  color: #a7f3d0;
+}
+
+#projects article > a {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.certificate-preview::after,
+#projects article > a::after {
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  content: "";
+  pointer-events: none;
+  transition: border-color 180ms ease;
+}
+
+.certificate-preview:is(:hover, :focus-visible),
+#projects article > a:is(:hover, :focus-visible) {
+  background: #ecfdf5;
+}
+
+.certificate-preview:is(:hover, :focus-visible)::after,
+#projects article > a:is(:hover, :focus-visible)::after {
+  border-color: #059669;
+}
+
+#projects article > a:focus-visible {
+  outline-offset: -4px;
+}
+
+.project-preview {
+  transition: transform 180ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  nav a::after,
+  footer a::after {
+    transition: transform 180ms ease;
+  }
+
+  .button-link:hover,
+  .resource-link:hover,
+  .linkedin-primary:hover,
+  .contact-email:hover {
+    transform: translateY(-2px);
+  }
+
+  .certificate-preview:hover img,
+  #projects article > a:hover img {
+    transform: scale(1.025);
+  }
+
+  .contact-email:hover .contact-email-arrow {
+    transform: translate(2px, -2px);
+  }
+
+  nav a[href="#top"]:hover > span:first-child,
+  footer a[href="#top"]:hover > span:first-child {
+    transform: translateY(-1px);
+  }
+
+  .button-link:active,
+  .resource-link:active,
+  .linkedin-primary:active,
+  .contact-email:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px -4px rgb(4 120 87 / 40%);
+  }
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #059669;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .button-link,
+  .resource-link,
+  .linkedin-primary,
+  .contact-email,
+  .certificate-preview img,
+  .project-preview,
+  .contact-email-arrow,
+  nav a[href="#top"] > span:first-child,
+  footer a[href="#top"] > span:first-child {
+    transform: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

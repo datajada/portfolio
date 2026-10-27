@@ -1,0 +1,102 @@
+:root {
+  --site-header-height: 5.75rem;
+}
+
+.nav-ready {
+  scroll-padding-top: calc(var(--site-header-height) + 1.25rem);
+}
+
+.nav-ready body {
+  padding-top: var(--site-header-height);
+}
+
+.nav-ready section[id] {
+  scroll-margin-top: 0;
+}
+
+.nav-ready #top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 60;
+  background: rgb(250 250 250 / 96%);
+  box-shadow: 0 1px 0 rgb(24 24 27 / 5%);
+  transition: background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.nav-ready #top nav {
+  background: transparent;
+}
+
+.nav-ready #top.is-scrolled,
+.nav-ready #top.is-menu-open {
+  background: rgb(250 250 250 / 98%);
+  box-shadow: 0 1px 0 #e4e4e7, 0 10px 28px -22px rgb(24 24 27 / 30%);
+}
+
+@supports (backdrop-filter: blur(12px)) {
+  .nav-ready #top {
+    background: rgb(250 250 250 / 90%);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-ready #top.is-scrolled,
+  .nav-ready #top.is-menu-open {
+    background: rgb(250 250 250 / 94%);
+  }
+}
+
+.nav-ready #top .mobile-nav {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  max-height: calc(100vh - var(--site-header-height));
+  max-height: calc(100dvh - var(--site-header-height));
+  margin-top: 0;
+  padding: 1rem 1.5rem 1.5rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-top: 1px solid #e4e4e7;
+  background: #fafafa;
+  box-shadow: 0 12px 24px -20px rgb(24 24 27 / 30%);
+}
+
+#top nav a[aria-current="location"] {
+  color: #047857;
+}
+
+#top nav a[aria-current="location"]::after {
+  transform: scaleX(1);
+}
+
+.nav-progress {
+  display: none;
+}
+
+.nav-ready .nav-progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  height: 2px;
+  pointer-events: none;
+  background: linear-gradient(90deg, #047857, #34d399);
+  transform: scaleX(0);
+  transform-origin: left;
+  will-change: transform;
+}
+
+@media (min-width: 64rem) {
+  .nav-ready #about .sticky {
+    top: calc(var(--site-header-height) + 1.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-ready #top {
+    transition: none;
+  }
+}
